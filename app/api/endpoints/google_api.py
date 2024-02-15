@@ -28,7 +28,9 @@ async def get_report(
     await set_user_permissions(spreadsheet_id, wrapper_services)
 
     try:
-        await spreadsheets_update_value(spreadsheet_id, projects, wrapper_services)
+        await spreadsheets_update_value(
+            spreadsheet_id, projects,
+            wrapper_services)
     except Exception as e:
         return {"error": str(e)}
 

@@ -49,10 +49,11 @@ async def check_project_was_closed(
     project_id: int,
     session: AsyncSession
 ):
-    project_close_date = await charity_project_crud.get_charity_project_close_date(
-        project_id,
-        session
-    )
+    project_close_date = (
+        await charity_project_crud.get_charity_project_close_date(
+            project_id,
+            session
+        ))
     if project_close_date:
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
@@ -64,10 +65,11 @@ async def check_project_was_invested(
     project_id: int,
     session: AsyncSession
 ):
-    invested_project = await charity_project_crud.get_charity_project_invested_amount(
-        project_id,
-        session
-    )
+    invested_project = (
+        await charity_project_crud.get_charity_project_invested_amount(
+            project_id,
+            session
+        ))
     if invested_project:
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
@@ -80,10 +82,11 @@ async def check_correct_full_amount_for_update(
     session: AsyncSession,
     full_amount_to_update: PositiveInt
 ):
-    db_project_invested_amount = await charity_project_crud.get_charity_project_invested_amount(
-        project_id,
-        session
-    )
+    db_project_invested_amount = (
+        await charity_project_crud.get_charity_project_invested_amount(
+            project_id,
+            session
+        ))
     if db_project_invested_amount > full_amount_to_update:
         raise HTTPException(
             status_code=HTTPStatus.UNPROCESSABLE_ENTITY,

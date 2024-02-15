@@ -11,27 +11,36 @@ from app.models.charity_project import CharityProject
 
 class CRUDCharityProject(CRUDBase):
 
-    async def get_charity_project(self, object_id: int, session: AsyncSession) -> Optional[CharityProject]:
+    async def get_charity_project(
+            self, object_id: int, session: AsyncSession
+            ) -> Optional[CharityProject]:
         charityproject_db = await session.execute(
             select(CharityProject).where(CharityProject.id == object_id)
         )
         return charityproject_db.scalars().first()
 
-    async def get_project_id_by_name(self, project_name: str, session: AsyncSession) -> Optional[int]:
+    async def get_project_id_by_name(
+            self, project_name: str, session: AsyncSession
+            ) -> Optional[int]:
         db_project_id = await session.execute(
-            select(CharityProject.id).where(CharityProject.name == project_name)
+            select(CharityProject.id).where(
+                CharityProject.name == project_name)
         )
         return db_project_id.scalars().first()
 
-    async def get_charity_project_close_date(self, project_id: int, session: AsyncSession):
+    async def get_charity_project_close_date(
+            self, project_id: int, session: AsyncSession):
         project_close_date = await session.execute(
-            select(CharityProject.close_date).where(CharityProject.id == project_id)
+            select(CharityProject.close_date).where(
+                CharityProject.id == project_id)
         )
         return project_close_date.scalars().first()
 
-    async def get_charity_project_invested_amount(self, project_id: int, session: AsyncSession):
+    async def get_charity_project_invested_amount(
+            self, project_id: int, session: AsyncSession):
         project_invested_amount = await session.execute(
-            select(CharityProject.invested_amount).where(CharityProject.id == project_id)
+            select(CharityProject.invested_amount).where(
+                CharityProject.id == project_id)
         )
         return project_invested_amount.scalars().first()
 

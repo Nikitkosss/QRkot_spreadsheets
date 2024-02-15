@@ -13,7 +13,7 @@ class CRUDCharityProject(CRUDBase):
 
     async def get_charity_project(
             self, object_id: int, session: AsyncSession
-            ) -> Optional[CharityProject]:
+    ) -> Optional[CharityProject]:
         charityproject_db = await session.execute(
             select(CharityProject).where(CharityProject.id == object_id)
         )
@@ -21,7 +21,7 @@ class CRUDCharityProject(CRUDBase):
 
     async def get_project_id_by_name(
             self, project_name: str, session: AsyncSession
-            ) -> Optional[int]:
+    ) -> Optional[int]:
         db_project_id = await session.execute(
             select(CharityProject.id).where(
                 CharityProject.name == project_name)

@@ -9,6 +9,6 @@ app = FastAPI(title=settings.app_title, description=settings.app_description)
 app.include_router(main_router_v1)
 
 
-@app.on_event('startup')
+@app.on_event("startup")
 async def startup():
     await create_first_superuser()

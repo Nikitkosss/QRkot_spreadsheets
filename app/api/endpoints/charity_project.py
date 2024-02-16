@@ -23,8 +23,7 @@ router = APIRouter()
 )
 async def get_all_charity_projects(
         session: AsyncSession = Depends(get_async_session)):
-    all_projects = await charity_project_crud.get_multi(session)
-    return all_projects
+    return await charity_project_crud.get_multi(session)
 
 
 @router.post(
@@ -64,9 +63,8 @@ async def partially_update_charity_project(
     if object_in.name is not None:
         await check_name_duplicate(object_in.name, session)
 
-    charity_project = await charity_project_crud.update(
+    return await charity_project_crud.update(
         charity_project, object_in, session)
-    return charity_project
 
 
 @router.delete(
@@ -80,6 +78,5 @@ async def delete_charity_project(
 ):
     charity_project = await check_project_exists(project_id, session)
     await check_project_was_invested(project_id, session)
-    charity_project = await charity_project_crud.remove(
+    return await charity_project_crud.remove(
         charity_project, session)
-    return charity_project

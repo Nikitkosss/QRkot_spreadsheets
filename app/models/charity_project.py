@@ -11,4 +11,4 @@ class CharityProject(PreBaseDonationCharity):
     description = Column(Text, nullable=False)
 
     def __repr__(self) -> str:
-        return f'Фонд {self.name}'
+        return f"Фонд {self.name}"

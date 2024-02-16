@@ -7,11 +7,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.crud.charity_project import charity_project_crud
 from app.models import CharityProject
 
-NOT_FOUND_ERROR = 'Данный проект не найден!'
-EXISTS_ERROR = 'Проект с таким именем уже существует!'
-UPDATE_ERROR = 'Закрытый проект нельзя редактировать!'
-DELETION_ERROR = 'В проект были внесены средства, не подлежит удалению!'
-AMOUNT_ERROR = 'Новая требуемая сумма должна быть больше уже внесенной.'
+NOT_FOUND_ERROR = "Данный проект не найден!"
+EXISTS_ERROR = "Проект с таким именем уже существует!"
+UPDATE_ERROR = "Закрытый проект нельзя редактировать!"
+DELETION_ERROR = "В проект были внесены средства, не подлежит удалению!"
+AMOUNT_ERROR = "Новая требуемая сумма должна быть больше уже внесенной."
 
 
 async def check_name_duplicate(

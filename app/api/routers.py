@@ -7,16 +7,16 @@ main_router_v1 = APIRouter()
 
 main_router_v1.include_router(
     charity_project_router,
-    prefix='/charity_project',
-    tags=['Charity Projects']
+    prefix="/charity_project",
+    tags=["Charity Projects"]
 )
 
 main_router_v1.include_router(
-    google_api_router, prefix='/google', tags=['Google']
+    google_api_router, prefix="/google", tags=["Google"]
 )
 
 main_router_v1.include_router(user_router)
 
 main_router_v1.include_router(
-    donation_router, prefix='/donation', tags=['Donations']
+    donation_router, prefix="/donation", tags=["Donations"]
 )
